@@ -958,7 +958,7 @@ function initCharts(){
    유틸
 ═══════════════════════════════════════════════════════ */
 function pct(a,b){return b?Math.round(a/b*100):0;}
-function fmt(d){return d instanceof Date?d.toISOString().slice(0,10):String(d||'').slice(0,10);}
+function fmt(d){if(!(d instanceof Date))return String(d||'').slice(0,10);const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`;}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function set(id,v){const el=document.getElementById(id);if(el)el.textContent=v;}
 function style(id,k,v){const el=document.getElementById(id);if(el)el.style[k]=v;}
